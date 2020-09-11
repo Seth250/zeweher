@@ -1,0 +1,114 @@
+.main-content{
+  // border: 1px solid blue;
+  padding-top: 3em;
+  padding-bottom: 6.8em;
+  display: flex;
+  justify-content: center;
+}
+
+.weather{
+  width: 40vw;
+  border-radius: 0.3rem;
+  box-shadow: 0.05rem 0.05rem 0.1rem 0 rgba(0, 0, 0, 0.7);
+  background: $pry-bg;
+  color: $pry-clr;
+
+  &-data{
+    // border: 1px solid green;
+    @include default-flex-styles;
+    padding: 1em 0;
+
+    .location{
+      text-align: center;
+      padding: 0 1em;
+    }
+  
+    .date{
+      font-size: 90%;
+      // color: #ec971f;
+      // color: #ffc87b; 
+      color: $sec-clr;
+      text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.6);
+    }
+  
+    .city{
+      font-size: 150%;
+      // font-weight: 500;
+      text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &-temp{
+    @include default-flex-styles;
+    // border: 1px solid orange;
+    padding: 2em 0;
+    text-shadow: 0.05rem 0.05rem 0.2rem rgba(0, 0, 0, 0.6);
+
+    .temperature{
+      text-align: center;
+      // border: 1px solid red;
+      padding: 0.5em;
+    }
+
+    .degree{
+      // color: $pry-clr;
+      display: flex;
+      align-items: center;
+      // border: 1px solid green;
+      text-shadow: 0.05rem 0.05rem 0.2rem rgba(0, 0, 0, 0.6);
+    }
+
+    .value{
+      font-size: 300%;
+      // font-weight: 500;
+    }
+
+    .unit{
+      font-size: 200%;
+    }
+
+    .desc{
+      // border: 1px solid red;
+      padding: 0.4em 2em;
+      text-align: center;
+      font-size: 120%;
+      text-transform: capitalize;
+      // color: #ffcf8c;
+      color: $sec-clr;
+    }
+
+    .description{
+      padding: 0.2em 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .weather{
+    width: 55vw;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  .weather{
+    width: 70vw;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .weather{
+    width: 90vw;
+    padding: 2em 0;
+
+    &-data{
+      // border: 1px solid red;
+      padding-bottom: 0;
+      flex-direction: column;
+    }
+
+    &-temp{
+      flex-direction: column;
+      padding-top: 0;
+    }
+  }
+}

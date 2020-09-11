@@ -1,0 +1,11 @@
+$primary-font-stack: 'Roboto', sans-serif;
+// $pry-bg: #389cbb;
+$pry-bg: #3a8ca5;
+$pry-clr: #fafafa;
+$sec-clr: #f5f5f5;
+
+@mixin default-flex-styles{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
