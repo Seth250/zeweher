@@ -9,6 +9,7 @@
     <title> ZeWeher &mdash; Weather App </title>
     <link rel="stylesheet" href="./styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet"> -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -26,18 +27,26 @@
         </div>
       </header>
       <main role="main" class="main-content">
-        <section class="weather">
+        <section class="weather hide">
           <div class="weather-data">
             <div class="location">
-              <p class="date"></p>
               <p class="city"></p>
+              <p class="date"></p>
             </div>
             <div class="icon">
+              <img src="" alt="weather icon" class="temp-icon" />
             </div>
           </div>
           <div class="weather-temp">
-            <!-- <canvas id="icon1" width="128" height="128"></canvas> -->
-            <div class="temperature"></div>
+            <div class="temperature">
+              CURRENTLY
+              <div class="degree">
+                  <p>
+                      <span class="value"></span>
+                      <span class="unit">C</span>
+                  </p>
+              </div>
+            </div>
             <div class="desc">
               <p class="description"></p>
               <p class="feels-like"></p>

@@ -3,12 +3,13 @@ const api = {
     baseurl: 'https://api.openweathermap.org/data/2.5/'
 }
 
+const weather = document.querySelector('.weather');
 const city = document.querySelector('.city');
 const date = document.querySelector('.date');
 const description = document.querySelector('.description');
-const temp = document.querySelector('.temperature');
+const tempValue = document.querySelector('.value');
 const feelsLike = document.querySelector('.feels-like');
-const icon = document.querySelector('.icon');
+const tempIcon = document.querySelector('.temp-icon');
 
 function setQuery(event){
     if (event.keyCode == 13) {
@@ -33,23 +34,18 @@ async function getSearchResults(query){
 }
 
 function showWeatherDetails(weatherData){
+    if (weather.classList.contains('hide')){
+        weather.classList.remove('hide');
+    }
     city.textContent = `${weatherData.name}, ${weatherData.sys.country}`;
     localStorage.setItem('city', city.textContent);
 
     const now = new Date();
     date.textContent = getDateValues(now);
     localStorage.setItem('date', date.textContent);
-    
-    temp.innerHTML = `
-        CURRENTLY
-        <div class="degree">
-            <p>
-                <span class="value">${Math.round(weatherData.main.temp)}°</span>
-                <span class="unit">C</span>
-            </p>
-        </div>
-    `;
-    localStorage.setItem('tempvalue', temp.querySelector('.value').textContent);
+
+    tempValue.textContent = `${Math.round(weatherData.main.temp)}°`;
+    localStorage.setItem('tempvalue', tempValue.textContent);
 
     description.textContent = weatherData.weather[0].description;
     localStorage.setItem('description', description.textContent);
@@ -57,30 +53,23 @@ function showWeatherDetails(weatherData){
     feelsLike.textContent = `Feels like ${Math.round(weatherData.main.feels_like)}°C`;
     localStorage.setItem('feelslike', feelsLike.textContent);
 
-    icon.innerHTML = `<img src="${getWeatherIconUrl(weatherData.weather[0].icon)}" alt="weather icon" class="temp-icon" />`;
-    localStorage.setItem('tempiconurl', icon.querySelector('.temp-icon').getAttribute('src'));
+    tempIcon.setAttribute('src', getWeatherIconUrl(weatherData.weather[0].icon));
+    localStorage.setItem('tempiconurl', tempIcon.getAttribute('src'));
 }
 
 function getLastSearchData(){
+    weather.classList.remove('hide');
     city.textContent = localStorage.getItem('city');
 
     date.textContent = localStorage.getItem('date');
-    
-    temp.innerHTML = `
-        CURRENTLY
-        <div class="degree">
-            <p>
-                <span class="value">${localStorage.getItem('tempvalue')}</span>
-                <span class="unit">C</span>
-            </p>
-        </div>
-    `;
+
+    tempValue.textContent = localStorage.getItem('tempvalue');
 
     description.textContent = localStorage.getItem('description');
 
     feelsLike.textContent = localStorage.getItem('feelslike');
 
-    icon.innerHTML = `<img src="${localStorage.getItem('tempiconurl')}" alt="weather icon" class="temp-icon" />`;
+    tempIcon.setAttribute('src', localStorage.getItem('tempiconurl'));
 }
 
 function getWeatherIconUrl(icon){
@@ -103,7 +92,7 @@ function mobileSearchToggle(event){
 function getDateValues(date){
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    return `${days[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+    return `${days[date.getDay()]}. ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
 }
 
 function initialize(){

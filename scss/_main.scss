@@ -1,7 +1,7 @@
 .main-content{
   // border: 1px solid blue;
   padding-top: 3em;
-  padding-bottom: 6.8em;
+  padding-bottom: 6.9em;
   display: flex;
   justify-content: center;
 }
@@ -9,8 +9,9 @@
 .weather{
   width: 40vw;
   border-radius: 0.3rem;
-  box-shadow: 0.05rem 0.05rem 0.1rem 0 rgba(0, 0, 0, 0.7);
-  background: $pry-bg;
+  box-shadow: 0.05rem 0.05rem 0.2rem 0 rgba(0, 0, 0, 0.6);
+  // background: $pry-bg;
+  background: linear-gradient(#26a7de, $pry-bg);
   color: $pry-clr;
 
   &-data{
@@ -24,16 +25,17 @@
     }
   
     .date{
-      font-size: 90%;
+      font-size: 95%;
       // color: #ec971f;
       // color: #ffc87b; 
       color: $sec-clr;
-      text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.6);
+      text-shadow: 0.05rem 0.05rem 0.05rem rgba(0, 0, 0, 0.6);
     }
   
     .city{
       font-size: 150%;
       // font-weight: 500;
+      letter-spacing: 0.02em;
       text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.6);
     }
   }
@@ -75,10 +77,11 @@
       text-transform: capitalize;
       // color: #ffcf8c;
       color: $sec-clr;
+      letter-spacing: 0.02em;
     }
 
     .description{
-      padding: 0.2em 0;
+      margin-bottom: 0.2em;
     }
   }
 }
@@ -109,6 +112,14 @@
     &-temp{
       flex-direction: column;
       padding-top: 0;
+
+      .value{
+        font-size: 260%;
+      }
+
+      .desc{
+        font-size: 110%;
+      }
     }
   }
 }
